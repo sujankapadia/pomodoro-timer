@@ -1,0 +1,239 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0d0d0d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Cube face ────────────────────────────────── */
+.cube-face {
+  width: 360px;
+  background: #f5f5f5;
+  border-radius: 40px;
+  padding: 30px 30px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Circular screen ──────────────────────────── */
+.screen {
+  width: 280px;
+  height: 280px;
+  background: #0a1628;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.screen.flash {
+  animation: screenFlash 0.5s ease-in-out 3;
+}
+
+@keyframes screenFlash {
+  0%, 100% { background: #0a1628; }
+  50% { background: #152a4a; }
+}
+
+/* ── SVG tick ring ────────────────────────────── */
+.tick-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.tick-ring line {
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke 0.15s ease;
+}
+
+.tick-ring line.active {
+  stroke: #e8850c;
+  filter: drop-shadow(0 0 1px rgba(232, 133, 12, 0.4));
+}
+
+.tick-ring line.current {
+  stroke: #e8850c;
+  animation: tickBlink 1s step-end infinite;
+}
+
+@keyframes tickBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.1; }
+}
+
+.tick-ring line.depleted {
+  stroke: rgba(232, 133, 12, 0.08);
+}
+
+/* ── Digits container (inline MM:SS) ──────────── */
+.digits {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  z-index: 1;
+}
+
+/* ── Single 7-segment digit ───────────────────── */
+.digit {
+  position: relative;
+  width: 36px;
+  height: 56px;
+}
+
+.seg {
+  position: absolute;
+  display: block;
+  background: rgba(0, 212, 255, 0.07);
+  transition: background 0.1s ease, filter 0.1s ease;
+}
+
+.seg.on {
+  background: #00d4ff;
+  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.6));
+}
+
+/* Horizontal segments: a, d, g */
+.seg-a, .seg-d, .seg-g {
+  width: 24px;
+  height: 5px;
+  left: 6px;
+  clip-path: polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%);
+}
+
+.seg-a { top: 0; }
+.seg-d { bottom: 0; }
+.seg-g { top: 50%; transform: translateY(-50%); }
+
+/* Vertical segments: b, c, e, f */
+.seg-b, .seg-c, .seg-e, .seg-f {
+  width: 5px;
+  height: 24px;
+  clip-path: polygon(50% 0%, 100% 12%, 100% 88%, 50% 100%, 0% 88%, 0% 12%);
+}
+
+.seg-b { top: 4px; right: 1px; }
+.seg-c { bottom: 4px; right: 1px; }
+.seg-e { bottom: 4px; left: 1px; }
+.seg-f { top: 4px; left: 1px; }
+
+/* ── Colon ────────────────────────────────────── */
+.colon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  width: 10px;
+  height: 56px;
+  padding: 12px 0;
+}
+
+.colon .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #00d4ff;
+  filter: drop-shadow(0 0 3px rgba(0, 212, 255, 0.5));
+  transition: opacity 0.15s ease;
+}
+
+.colon.blink .dot {
+  animation: colonBlink 1s step-end infinite;
+}
+
+@keyframes colonBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ── Preset buttons ───────────────────────────── */
+.presets {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.preset-btn {
+  width: 48px;
+  height: 34px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background: transparent;
+  color: #555;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.preset-btn:hover {
+  border-color: #e8850c;
+  color: #e8850c;
+}
+
+.preset-btn.active {
+  border-color: #e8850c;
+  background: #e8850c;
+  color: #fff;
+}
+
+/* ── Control buttons ──────────────────────────── */
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.ctrl-btn {
+  width: 100px;
+  height: 38px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+#startPause {
+  background: #e8850c;
+  color: #fff;
+}
+
+#startPause:hover {
+  background: #d47a0b;
+}
+
+#reset {
+  background: #ddd;
+  color: #555;
+}
+
+#reset:hover {
+  background: #ccc;
+}
+
+/* ── Completion blink on digits ───────────────── */
+.digits.done .seg.on {
+  animation: digitBlink 1s step-end infinite;
+}
+
+@keyframes digitBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
