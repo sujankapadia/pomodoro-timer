@@ -108,8 +108,8 @@ body {
 /* ── Single 7-segment digit ───────────────────── */
 .digit {
   position: relative;
-  width: 32px;
-  height: 56px;
+  width: 44px;
+  height: 76px;
   flex-shrink: 0;
 }
 
@@ -127,9 +127,9 @@ body {
 
 /* Horizontal segments: a, d, g */
 .seg-a, .seg-d, .seg-g {
-  width: 20px;
-  height: 5px;
-  left: 6px;
+  width: 28px;
+  height: 7px;
+  left: 8px;
   clip-path: polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%);
 }
 
@@ -139,15 +139,15 @@ body {
 
 /* Vertical segments: b, c, e, f */
 .seg-b, .seg-c, .seg-e, .seg-f {
-  width: 5px;
-  height: 24px;
+  width: 7px;
+  height: 32px;
   clip-path: polygon(50% 0%, 100% 12%, 100% 88%, 50% 100%, 0% 88%, 0% 12%);
 }
 
-.seg-b { top: 4px; right: 1px; }
-.seg-c { bottom: 4px; right: 1px; }
-.seg-e { bottom: 4px; left: 1px; }
-.seg-f { top: 4px; left: 1px; }
+.seg-b { top: 5px; right: 1px; }
+.seg-c { bottom: 5px; right: 1px; }
+.seg-e { bottom: 5px; left: 1px; }
+.seg-f { top: 5px; left: 1px; }
 
 /* ── Colon ────────────────────────────────────── */
 .colon {
@@ -155,15 +155,15 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 14px;
-  width: 10px;
-  height: 56px;
-  padding: 12px 0;
+  gap: 18px;
+  width: 14px;
+  height: 76px;
+  padding: 16px 0;
 }
 
 .colon .dot {
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #00d4ff;
   filter: drop-shadow(0 0 3px rgba(0, 212, 255, 0.5));

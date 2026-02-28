@@ -18,14 +18,14 @@ e   c
  ─d─
 ```
 
-**Shapes:** Each segment is a small rectangle clipped into a hexagon via `clip-path: polygon(...)`. Horizontal segments (a, d, g) are 24x5px. Vertical segments (b, c, e, f) are 5x24px. The polygon gives tapered/pointed ends like real LED segments.
+**Shapes:** Each segment is a small rectangle clipped into a hexagon via `clip-path: polygon(...)`. Horizontal segments (a, d, g) are 28x7px. Vertical segments (b, c, e, f) are 7x32px. The polygon gives tapered/pointed ends like real LED segments.
 
-**Positioning:** All segments use `position: absolute` within the 36x56px digit container:
+**Positioning:** All segments use `position: absolute` within the 44x76px digit container:
 - `seg-a`: `top: 0`, `seg-d`: `bottom: 0`, `seg-g`: `top: 50%`
-- `seg-f`/`seg-b`: `top: 4px`, left/right sides
-- `seg-e`/`seg-c`: `bottom: 4px`, left/right sides
+- `seg-f`/`seg-b`: `top: 5px`, left/right sides
+- `seg-e`/`seg-c`: `bottom: 5px`, left/right sides
 
-**Ghost segments:** Default background is `rgba(0, 212, 255, 0.07)` — barely visible, mimicking unlit segments on a real display. The `.on` class switches to `#00d4ff` with a `drop-shadow` glow.
+**Ghost segments:** Default background is `rgba(0, 212, 255, 0.12)` — faintly visible, mimicking unlit segments on a real display. The `.on` class switches to `#00d4ff` with a `drop-shadow` glow.
 
 **Digit mapping (JS):** A lookup table maps each number (0-9) to a 7-element array indicating which segments are on:
 
@@ -38,7 +38,7 @@ e   c
 
 ## Tick Ring
 
-60 SVG `<line>` elements generated on page load by `generateTicks()`. Each line is positioned using trigonometry at 6-degree intervals starting at 12 o'clock (`-90°` offset). Lines run from radius 126 to 136 within the 280x280 SVG viewBox.
+60 SVG `<line>` elements generated on page load by `generateTicks()`. Each line is positioned using trigonometry at 6-degree intervals starting at 12 o'clock (`-90°` offset). Lines run from radius 120 to 136 within the 280x280 SVG viewBox, with 3.5px stroke width and butt linecaps for a dense appearance.
 
 **Depletion:** Ticks deplete counter-clockwise. `updateTickRing(remaining, total)` calculates how many ticks should be lit (`Math.ceil((remaining / total) * 60)`) and applies three classes:
 - `.active` — lit orange (`#e8850c`)
