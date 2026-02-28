@@ -73,8 +73,8 @@ body {
 }
 
 .tick-ring line {
-  stroke-width: 3;
-  stroke-linecap: round;
+  stroke-width: 3.5;
+  stroke-linecap: butt;
   transition: stroke 0.15s ease;
 }
 
@@ -101,21 +101,22 @@ body {
 .digits {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 0;
   z-index: 1;
 }
 
 /* ── Single 7-segment digit ───────────────────── */
 .digit {
   position: relative;
-  width: 36px;
+  width: 32px;
   height: 56px;
+  flex-shrink: 0;
 }
 
 .seg {
   position: absolute;
   display: block;
-  background: rgba(0, 212, 255, 0.07);
+  background: rgba(0, 212, 255, 0.12);
   transition: background 0.1s ease, filter 0.1s ease;
 }
 
@@ -126,7 +127,7 @@ body {
 
 /* Horizontal segments: a, d, g */
 .seg-a, .seg-d, .seg-g {
-  width: 24px;
+  width: 20px;
   height: 5px;
   left: 6px;
   clip-path: polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%);

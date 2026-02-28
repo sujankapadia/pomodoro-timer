@@ -40,7 +40,7 @@ let isCompleted = false;
 // ── Generate tick ring ──────────────────────────
 function generateTicks() {
   const cx = 140, cy = 140;
-  const r1 = 126, r2 = 136;   // inner / outer radius
+  const r1 = 120, r2 = 136;   // inner / outer radius (longer ticks)
   for (let i = 0; i < 60; i++) {
     const angle = (i * 6 - 90) * (Math.PI / 180); // start at 12 o'clock
     const x1 = cx + r1 * Math.cos(angle);
