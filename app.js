@@ -177,7 +177,12 @@ function complete() {
 // ── Alarm sound (Web Audio API) ─────────────────
 function playAlarm() {
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  const beepTimes = [0, 0.3, 0.6];
+  // 3 rounds of 3 beeps, with a pause between rounds
+  const beepTimes = [
+    0, 0.25, 0.5,        // round 1
+    1.2, 1.45, 1.7,      // round 2
+    2.4, 2.65, 2.9,      // round 3
+  ];
   beepTimes.forEach((offset) => {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();

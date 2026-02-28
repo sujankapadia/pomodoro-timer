@@ -63,7 +63,7 @@ This is drift-proof and survives browser tab throttling. On pause, elapsed time 
 
 ## Alarm Sound
 
-Uses Web Audio API — no audio files. `playAlarm()` creates 3 short square-wave oscillator beeps at 880Hz, offset by 300ms each. Each beep uses a gain node with `exponentialRampToValueAtTime` for a quick decay.
+Uses Web Audio API — no audio files. `playAlarm()` creates 3 rounds of 3 square-wave beeps at 880Hz (~3 seconds total), with pauses between rounds. Each beep uses a gain node with `exponentialRampToValueAtTime` for a quick decay. Test in the browser console with `playAlarm()`.
 
 ## Completion Effects
 
