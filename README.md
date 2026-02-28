@@ -8,7 +8,7 @@ This project started with a physical cube timer sitting on a desk — a white cu
 
 <p align="center">
   <img src="assets/physical-pomodoro-timer-1.jpeg" alt="Physical cube timer" width="300">
-  <img src="screenshot.png" alt="Web app recreation" width="300">
+  <img src="screenshot.png" alt="Web app recreation" width="500">
 </p>
 
 The reference photos above drove every design decision — from the exact orange of the tick marks (`#e8850c`) to the way unlit LED segments remain faintly visible as ghost outlines, to the 3D beveled edges of the cube and the recessed screen.
