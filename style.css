@@ -79,12 +79,12 @@ body {
 }
 
 .tick-ring line.active {
-  stroke: #e8850c;
-  filter: drop-shadow(0 0 1px rgba(232, 133, 12, 0.4));
+  stroke: #f59a1e;
+  filter: drop-shadow(0 0 3px rgba(245, 154, 30, 0.7));
 }
 
 .tick-ring line.current {
-  stroke: #e8850c;
+  stroke: #f59a1e;
   animation: tickBlink 1s step-end infinite;
 }
 
