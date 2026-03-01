@@ -36,6 +36,12 @@ e   c
 
 `setDigit(el, num)` toggles the `.on` class on each span. `updateDisplay(seconds)` splits time into MM:SS digits and updates all four.
 
+**Why CSS `clip-path` over SVG shapes?** Both could produce the same hexagonal segments, but `clip-path` is a better fit here:
+- **Ghost segments for free** — every `<span>` is always in the DOM with a faint background. Toggling on/off is just a CSS class swap. SVG would require managing fill/opacity on individual `<path>` elements.
+- **Simpler DOM** — each digit is 7 `<span>` tags in a `<div>`, positioned with standard CSS (`width`, `height`, `top`, `right`). SVG would introduce a separate coordinate system (`viewBox`, `<path d="...">`, `transform` attributes) — more powerful, but overkill for simple hexagons.
+- **CSS animations just work** — the glow (`filter: drop-shadow`), blink animation, and background transitions are all standard CSS. SVG elements can be styled with CSS too, but some properties behave differently (`fill` vs `background`, `stroke` vs `border`).
+- **When SVG would be better** — if segments had complex curved shapes, or if digits needed to scale to arbitrary sizes while staying crisp, SVG paths would be the stronger choice.
+
 ## Tick Ring
 
 60 SVG `<line>` elements generated on page load by `generateTicks()`. Each line is positioned using trigonometry at 6-degree intervals starting at 12 o'clock (`-90°` offset). Lines run from radius 120 to 136 within the 280x280 SVG viewBox, with 3.5px stroke width and butt linecaps for a dense appearance.
